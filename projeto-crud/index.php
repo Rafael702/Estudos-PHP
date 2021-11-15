@@ -20,7 +20,7 @@ $p = new Pessoa("crudpdo", "localhost", "root", "");
         $nome = addslashes($_POST['nome']);
         $telefone = addslashes($_POST['telefone']);
         $email = addslashes($_POST['email']);
-        if (empty($nome) && !empty($telefone) && !empty($email)) {
+        if (!empty($nome) && !empty($telefone) && !empty($email)) {
             //cadastrar
             if (!$p->cadastrarPessoa($nome, $telefone, $email)) {
                 echo "Email já está cadastrado!";
@@ -31,7 +31,7 @@ $p = new Pessoa("crudpdo", "localhost", "root", "");
     }
     ?>
     <section id="esquerda">
-        <form>
+        <form method="POST">
             <h2>CADASTRAR PESSOA</h2>
             <label for="name">NOME</label>
             <input type="text" name="nome" id="nome">
@@ -60,7 +60,7 @@ $p = new Pessoa("crudpdo", "localhost", "root", "");
                         }
                     }
             ?>
-                    <td><a href="">Editar</a><a href="">Excluir</a></td>;
+                    <td><a href="">Editar</a><a href="">Excluir</a></td>
             <?php
                     echo "</tr>";
                 }
